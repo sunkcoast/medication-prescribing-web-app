@@ -2,13 +2,6 @@
 
 Aplikasi manajemen peresepan obat digital yang mengintegrasikan alur kerja **Dokter** dan **Apoteker** secara *real-time*. Dibangun menggunakan **Laravel**, dengan fokus pada keamanan data medis, validasi backend, dan integrasi API obat eksternal.
 
-### 
-<img width="1054" height="1364" alt="127 0 0 1_8000_doctor_examinations (1)" src="https://github.com/user-attachments/assets/d8d53fe2-b351-4a79-b149-b5a509404f46" />
-<img width="949" height="777" alt="127 0 0 1_8000_doctor_prescriptions_4_edit" src="https://github.com/user-attachments/assets/85399f1c-7793-47f9-9f1a-d57918922436" />
-<img width="950" height="1380" alt="127 0 0 1_8000_doctor_activity-logs" src="https://github.com/user-attachments/assets/87be3d8e-3d33-44d6-9ba5-beec65211f14" />
-<img width="950" height="819" alt="127 0 0 1_8000_pharmacist_prescriptions (1)" src="https://github.com/user-attachments/assets/586cd1ce-cd8e-4656-9ea3-a76685609117" />
-<img width="995" height="497" alt="127 0 0 1_8000_pharmacist_pdf" src="https://github.com/user-attachments/assets/b024b6bc-3780-47e3-85a2-5a1fb0c44386" />
-
 ---
 
 ## 🛠️ Panduan Instalasi (Reviewer Guide)
