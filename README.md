@@ -2,6 +2,13 @@
 
 Aplikasi manajemen peresepan obat digital yang mengintegrasikan alur kerja **Dokter** dan **Apoteker** secara *real-time*. Dibangun menggunakan **Laravel**, dengan fokus pada keamanan data medis, validasi backend, dan integrasi API obat eksternal.
 
+###
+
+<img width="1503" height="1173" alt="3" src="https://github.com/user-attachments/assets/34ab893a-ab7b-4cfa-bb6f-64d01b30f89e" />
+<img width="1503" height="941" alt="1" src="https://github.com/user-attachments/assets/c7241bec-3170-4c4b-a2e0-b87bbe57e0d5" />
+<img width="1503" height="912" alt="2" src="https://github.com/user-attachments/assets/9e5d2950-b728-43d9-9975-22f44bd84789" />
+<img width="1520" height="847" alt="4" src="https://github.com/user-attachments/assets/79c0ab47-53fd-4aeb-bc5a-fcbdf14494a9" />
+
 ---
 
 ## 🛠️ Panduan Instalasi (Reviewer Guide)
@@ -48,7 +55,7 @@ DB_USERNAME=root
 DB_PASSWORD=
 
 # Medicine API Configuration (External)
-MEDICINE_API_BASE_URL=[http://recruitment.rsdeltasurya.com/api/v1](http://recruitment.rsdeltasurya.com/api/v1)
+MEDICINE_API_BASE_URL=[http://recruitment.rsdeltasurya.com/api/v1]
 MEDICINE_API_TOKEN=
 MEDICINE_API_EMAIL=
 MEDICINE_API_PASSWORD=
