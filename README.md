@@ -65,7 +65,7 @@ php artisan serve
 **Key Features:**
 * **Session Authentication:** Secure login powered by Laravel Breeze.
 * **Examination Input:**
-    * **Smart Selection:** Select patients from a pre-populated dropdown list.
+    * **Smart Selection:** Patients are automatically sorted with the most recent arrivals at the top for instant access.
     * **Examination Timestamp:** Automated logging to track fluctuating medicine pricing benchmarks.
     * **Vital Signs Tracking:** Complete input mapping: Height, Weight, Blood Pressure (Systole/Diastole), Heart Rate, Respiration Rate, and Body Temperature.
     * **Clinical Notes:** Free-text input fields for clinical observation findings.
@@ -84,12 +84,13 @@ php artisan serve
 **Key Features:**
 * **Session Authentication:** Secure login powered by Laravel Breeze.
 * **Prescription Service:**
-    * View medical drafts submitted by doctors and review itemized costs.
+    * **View Drafts:** Access medical drafts submitted by doctors and review itemized costs.
     * **API Price Sync:** Fetch active fluctuating medicine pricing tables live via the medicine ID.
 * **Finalization & Locking:**
-    * Process patient transaction payments.
-    * Automatically issue a hard lock on the clinical record post-payment, restricting the doctor from making further structural changes.
+    * **Payment Processing:** Process patient transaction payments.
+    * **Hard Lock:** Automatically issue a hard lock on the clinical record post-payment, restricting the doctor from making further structural changes.
 * **Output:** Generate and export standardized payment invoices in **PDF** format.
+
 ---
 
 ## 🔄 System Workflows
