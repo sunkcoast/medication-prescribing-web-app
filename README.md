@@ -1,4 +1,7 @@
 ## 🎓 CS50SQL Project & Database Design
+![Laravel](https://img.shields.io/badge/Laravel-12.x-FF2D20?style=for-the-badge&logo=laravel)
+![PHP](https://img.shields.io/badge/PHP-8.2%2B-777BB4?style=for-the-badge&logo=php)
+![MySQL](https://img.shields.io/badge/MySQL-8.0-4479A1?style=for-the-badge&logo=mysql)
 
 This application implements a secure electronic health record (EHR) environment built on a fully normalized relational schema, satisfying the database standards of Harvard's CS50SQL:
 
@@ -10,6 +13,47 @@ This application implements a secure electronic health record (EHR) environment 
 
 <img width="1260" height="1184" alt="SIMRS — CS50 SQL Final Project" src="https://github.com/user-attachments/assets/9b075be0-190e-487c-897f-a00ef4ce4ad5" />
 <img width="1277" height="834" alt="SIMRS — Secure Portal Auth" src="https://github.com/user-attachments/assets/adc98d48-7954-4d7d-8ca7-2e08fd537fed" />
+
+---
+
+### 1️⃣ Konfigurasi Environment (`.env`)
+Copy the .env.example file to create your .env file, and adjust the configuration accordingly. Ensure the Medicine API credentials are provided to enable medicine data synchronization and real-time pricing.
+
+```
+cp .env.example .env
+php artisan key:generate
+```
+Update the following values in your .env file:
+```
+# Database Configuration
+DB_CONNECTION=mysql
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE=medication_prescribing
+DB_USERNAME=root
+DB_PASSWORD=
+
+# Medicine API Configuration (External)
+MEDICINE_API_BASE_URL=https://rxnav.nlm.nih.gov/REST
+MEDICINE_API_EMAIL=dummy_email
+MEDICINE_API_PASSWORD=dummy_password
+MEDICINE_API_TOKEN_CACHE_KEY=medicine_api_bearer_token
+```
+
+### 2️⃣ Setup Database & Seeding
+* Run the following commands to migrate the tables and populate the database with demo data:
+    * Note: The seeder will automatically generate 10 mock patients (via Factories) and initialize default access accounts for both the Doctor and Pharmacist roles.
+
+```
+php artisan migrate --seed
+```
+
+
+Jalankan server lokal:
+
+```
+php artisan serve
+```
 
 ---
 
