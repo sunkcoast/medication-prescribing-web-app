@@ -83,5 +83,5 @@ graph TD
 ```
 
 ## Achivement
-!<img width="2246" height="1588" alt="CS50 SQL" src="https://github.com/user-attachments/assets/9cea2d45-f129-4fb2-b0cb-90d17caf7ea3" />
+<img width="2246" height="1588" alt="CS50 SQL" src="https://github.com/user-attachments/assets/9cea2d45-f129-4fb2-b0cb-90d17caf7ea3" />
 
