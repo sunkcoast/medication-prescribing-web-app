@@ -15,17 +15,37 @@ This application implements a secure electronic health record (EHR) environment 
 
 ## 🚀 Core Workflows & Features
 
-Both modules feature secure session authentication powered by **Laravel Breeze** alongside server-side validation (`FormRequest`) to ensure data integrity.
-
 ### 🩺 Doctor Module
-* **Clinical Records:** Document patient vital signs (BP, HR, RR, Temp, BMI), free-text clinical assessment notes, and optional physical file attachments.
-* **Prescription Engine:** Real-time drug lookup powered by external API sync. Doctors retain open editing access **strictly until** the prescription gets fulfilled.
-* **System Logging:** Every data mutation generates immutable security logs.
+**Objective:** Document patient clinical outcomes and prescribing instructions.
+
+**Key Features:**
+* **Session Authentication:** Secure login powered by Laravel Breeze.
+* **Examination Input:**
+    * **Smart Selection:** Select patients from a pre-populated dropdown list.
+    * **Examination Timestamp:** Automated logging to track fluctuating medicine pricing benchmarks.
+    * **Vital Signs Tracking:** Complete input mapping: Height, Weight, Blood Pressure (Systole/Diastole), Heart Rate, Respiration Rate, and Body Temperature.
+    * **Clinical Notes:** Free-text input fields for clinical observation findings.
+    * **Document Attachment:** Optional uploads for external laboratory or diagnostic files (PDF/Images).
+* **Add Prescription:**
+    * **API Integration:** Live drug catalog lookup via external REST API endpoints.
+    * **Edit Access:** Doctors can update the prescription freely until it has been processed or paid at the pharmacy.
+    * **Backend Validation:** Server-side validation layer to preserve medical records integrity.
+* **Activity Logging:** Every mutation made by a doctor or pharmacist is permanently written to an activity log.
+
+---
 
 ### 💊 Pharmacist Module
-* **Fulfillment & Pricing:** Fetch pending doctor prescriptions and calculate live costs through external fluctuating medicine API endpoints.
-* **Billing System:** Process payments, generate official **PDF** receipts, and instantly issue a global hard lock on the underlying medical files.
+**Objective:** Validate patient prescriptions and process administrative billing.
 
+**Key Features:**
+* **Session Authentication:** Secure login powered by Laravel Breeze.
+* **Prescription Service:**
+    * View medical drafts submitted by doctors and review itemized costs.
+    * **API Price Sync:** Fetch active fluctuating medicine pricing tables live via the medicine ID.
+* **Finalization & Locking:**
+    * Process patient transaction payments.
+    * Automatically issue a hard lock on the clinical record post-payment, restricting the doctor from making further structural changes.
+* **Output:** Generate and export standardized payment invoices in **PDF** format.
 ---
 
 ## 🔄 System Workflows
