@@ -81,3 +81,7 @@ graph TD
     H --> I[Generate PDF Invoice]
     C -- No --> J[Save Baseline Medical Record Only]
 ```
+
+## Achivement
+!<img width="2246" height="1588" alt="CS50 SQL" src="https://github.com/user-attachments/assets/9cea2d45-f129-4fb2-b0cb-90d17caf7ea3" />
+
