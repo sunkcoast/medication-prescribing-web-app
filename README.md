@@ -49,7 +49,7 @@ php artisan migrate --seed
 ```
 
 
-Jalankan server lokal:
+Run local server:
 
 ```
 php artisan serve
