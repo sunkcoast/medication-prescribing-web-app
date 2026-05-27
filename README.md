@@ -1,200 +1,63 @@
-### 🏥 Medication Prescribing Web Application
+## 🎓 CS50SQL Project & Database Design
 
-Aplikasi manajemen peresepan obat digital yang mengintegrasikan alur kerja **Dokter** dan **Apoteker** secara *real-time*. Dibangun menggunakan **Laravel**, dengan fokus pada keamanan data medis, validasi backend, dan integrasi API obat eksternal.
+This application implements a secure electronic health record (EHR) environment built on a fully normalized relational schema, satisfying the database standards of Harvard's CS50SQL:
 
-###
-
-<img width="1503" height="1173" alt="3" src="https://github.com/user-attachments/assets/34ab893a-ab7b-4cfa-bb6f-64d01b30f89e" />
-<img width="1503" height="941" alt="1" src="https://github.com/user-attachments/assets/c7241bec-3170-4c4b-a2e0-b87bbe57e0d5" />
-<img width="1503" height="912" alt="2" src="https://github.com/user-attachments/assets/9e5d2950-b728-43d9-9975-22f44bd84789" />
-<img width="1520" height="847" alt="4" src="https://github.com/user-attachments/assets/79c0ab47-53fd-4aeb-bc5a-fcbdf14494a9" />
+* **Schema Design & Integrity:** 3NF normalized relationships spanning Users, Patients, Examinations, Prescriptions, and Payments. Strict foreign key mapping (`ON DELETE RESTRICT/CASCADE`) prevents orphaned medical data.
+* **Concurrency & Locking:** Employs programmatic atomic locks to secure clinical data post-payment, forcing a hard *Read-Only* state to guarantee permanent audit trails.
+* **Optimization:** Strategic indexing applied across heavily queried composite keys and status attributes (`patient_id`, `doctor_id`, status flags) to optimize fetch speeds for dense patient charts.
 
 ---
 
-## 🛠️ Panduan Instalasi (Reviewer Guide)
-
-Ikuti langkah-langkah di bawah ini untuk menjalankan aplikasi di lingkungan lokal Anda.
-
-### Prasyarat Sistem
-* **PHP:** 8.2 atau lebih tinggi
-* **Laravel:** 12.x
-* **Database:** MySQL / MariaDB
-* **Package Manager:** Composer
+<img width="1260" height="1184" alt="SIMRS — CS50 SQL Final Project" src="https://github.com/user-attachments/assets/9b075be0-190e-487c-897f-a00ef4ce4ad5" />
+<img width="1277" height="834" alt="SIMRS — Secure Portal Auth" src="https://github.com/user-attachments/assets/adc98d48-7954-4d7d-8ca7-2e08fd537fed" />
 
 ---
 
-### 0️⃣ Clone & Instalasi Library
-Buka terminal Anda dan jalankan perintah berikut secara berurutan:
+## 🚀 Core Workflows & Features
 
-```bash
-# Clone repositori
-git clone https://github.com/sunkcoast/medication-prescribing.git
+Both modules feature secure session authentication powered by **Laravel Breeze** alongside server-side validation (`FormRequest`) to ensure data integrity.
 
-# Masuk ke folder proyek
-cd medication-prescribing
+### 🩺 Doctor Module
+* **Clinical Records:** Document patient vital signs (BP, HR, RR, Temp, BMI), free-text clinical assessment notes, and optional physical file attachments.
+* **Prescription Engine:** Real-time drug lookup powered by external API sync. Doctors retain open editing access **strictly until** the prescription gets fulfilled.
+* **System Logging:** Every data mutation generates immutable security logs.
 
-# Install dependensi Laravel
-composer install
-```
-
-### 1️⃣ Konfigurasi Environment (`.env`)
-Salin file `.env.example` menjadi `.env`, lalu sesuaikan konfigurasi berikut. Pastikan **API Obat** terisi agar fitur sinkronisasi harga dan data obat berjalan dengan baik.
-
-```
-cp .env.example .env
-php artisan key:generate
-```
-Sesuaikan nilai berikut di dalam file .env:
-```
-# Database Configuration
-DB_CONNECTION=mysql
-DB_HOST=127.0.0.1
-DB_PORT=3306
-DB_DATABASE=medication_prescribing
-DB_USERNAME=root
-DB_PASSWORD=
-
-# Medicine API Configuration (External)
-MEDICINE_API_BASE_URL=[http://recruitment.rsdeltasurya.com/api/v1]
-MEDICINE_API_TOKEN=
-MEDICINE_API_EMAIL=
-MEDICINE_API_PASSWORD=
-```
-
-### 2️⃣ Setup Database & Seeding
-* Jalankan perintah berikut untuk melakukan migrasi tabel dan pengisian data demo ke dalam database:
-    * Note: Fitur Seeder akan otomatis membuat 10 data pasien (Factory) serta akun akses default untuk Dokter dan Apoteker.
-
-```
-php artisan migrate --seed
-```
-
-
-Jalankan server lokal:
-
-```
-php artisan serve
-```
-
-### 3️⃣ Autentikasi (Laravel Breeze)
-
-Aplikasi ini menggunakan Laravel Breeze untuk sistem keamanan. Gunakan kredensial hasil seeding berikut untuk menguji sistem:
-
-Lalu access the login page at: 👉 ```http://127.0.0.1:8000/login```
-
-| Role       | Email                | Password   |
-|------------|----------------------|------------|
-| Doctor     | dokter@test.com      | password   |
-| Pharmacist | apoteker@test.com    | password   |
-
-### 💡 Catatan Arsitektur (Disclaimer)
-* Aplikasi ini menggunakan metode "NPM-Less" untuk mempermudah portabilitas. Anda tidak perlu menjalankan npm install atau npm run dev karena:
-    * UI Framework: Tailwind CSS (via Play CDN).
-    * Interactivity: Alpine.js (via CDN).
-    * Icons: FontAwesome (via CDN).
-
-
-## 🚀 Alur Kerja & Fitur Utama
-
-### 🩺 Modul Dokter (Doctor)
-**Tujuan:** Mencatat hasil klinis pasien dan instruksi pengobatan.
-
-**Fitur Utama:**
-* **Autentikasi Sesi:** Login aman menggunakan Laravel Breeze.
-* **Examination Input:**
-    * **Smart Selection:** Memilih pasien dari daftar *dropdown* yang tersedia. 
-    * **Waktu Pemeriksaan:** Pencatatan otomatis untuk penentuan harga obat fluktuatif.
-    * **Vital Signs Tracking:** Input lengkap: Tinggi, Berat, Tekanan Darah (Systole/Diastole), Heart Rate, Respiration Rate, dan Suhu Tubuh.
-    * **Clinical Notes:** Catatan hasil pemeriksaan berupa teks bebas.
-    * **Document Attachment:** Unggah berkas pemeriksaan luar (PDF/Image) secara opsional.
-* **Add Prescription:**
-    * **API Integration:** Pengambilan daftar obat melalui REST API eksternal.
-    * **Edit Access:** Dokter dapat mengubah resep selama belum dilayani/dibayar di apoteker.
-    * **Backend Validation:** Validasi sisi server untuk menjamin integritas data.
-* **Activity Logging:** Setiap perubahan data (dokter & apokter) dicatat dalam log aktivitas.
+### 💊 Pharmacist Module
+* **Fulfillment & Pricing:** Fetch pending doctor prescriptions and calculate live costs through external fluctuating medicine API endpoints.
+* **Billing System:** Process payments, generate official **PDF** receipts, and instantly issue a global hard lock on the underlying medical files.
 
 ---
 
-### 💊 Modul Apoteker (Pharmacist)
-**Tujuan:** Memvalidasi resep dan memproses administrasi pembayaran.
+## 🔄 System Workflows
 
-**Fitur Utama:**
-* **Autentikasi Sesi:** Login aman menggunakan Laravel Breeze.
-* **Prescription Service:** * Melihat resep yang ditulis dokter dan menghitung total pembayaran.
-    * **API Price Sync:** Mengambil data harga obat fluktuatif berdasarkan ID obat melalui API.
-* **Finalisasi & Locking:** * Memproses transaksi pembayaran pasien.
-    * Otomatis mengunci rekam medis agar tidak dapat diubah kembali oleh dokter setelah "Process Payment".
-* **Output:** Cetak resi pembayaran resmi dalam format **PDF**.
-
----
-
-## 🔗 Integrasi API Obat
-
-Sistem telah mengimplementasikan alur integrasi API sesuai spesifikasi:
-1. **Authentication:** Menggunakan method `POST` ke `/api/v1/auth` untuk mendapatkan Bearer Token.
-2. **Medicines List:** Menggunakan method `GET` ke `/api/v1/medicines` dengan Bearer Auth.
-3. **Price Fetching:** Menggunakan method `GET` ke `/api/v1/medicines/{id}/prices` untuk mendapatkan harga real-time.
-
----
-
-## 4️⃣ Relasi Antar Tabel (Database Relations)
-
-### 👤 User (Doctor/Pharmacist)
-* └── **$1:N$** `hasMany` → **Examination** (sebagai `doctor_id`)
-* └── **$1:N$** `hasMany` → **Prescription** (sebagai `doctor_id` / `pharmacist_id`)
-
-### 👥 Patient
-* └── **$1:N$** `hasMany` → **Examination** (Riwayat medis pasien)
-
-### 📋 Examination
-* ├── **$N:1$** `belongsTo` → **Patient**
-* ├── **$N:1$** `belongsTo` → **User** (Doctor)
-* └── **$1:1$** `hasOne` → **Prescription**
-
-### 💊 Prescription
-* ├── **$1:1$** `belongsTo` → **Examination**
-* ├── **$N:1$** `belongsTo` → **User** (Doctor)
-* ├── **$N:1$** `belongsTo` → **User** (Pharmacist)
-* ├── **$1:N$** `hasMany` → **PrescriptionItem** (Daftar rincian obat)
-* └── **$1:1$** `hasOne` → **Payment**
-
-### 🔄 Alur Kerja Sistem (Sequence Diagram)
-
+### 1. Architectural Sequence
 ```mermaid
 sequenceDiagram
-    participant D as 🩺 Dokter
+    participant D as 🩺 Doctor
     participant API as 🌐 External Medicine API
     participant DB as 🗄️ Database
-    participant A as 💊 Apoteker
+    participant A as 💊 Pharmacist
 
-    Note over D: Input Gejala & Vital Signs
-    D->>DB: Simpan Pemeriksaan (Examination)
-    D->>API: Request Daftar Obat & Harga
-    API-->>D: Data Obat Real-time
-    D->>DB: Buat Draft Resep (Prescription)
-    
-    Note over A: Cek Resep Pending
-    A->>API: Validasi Harga Terbaru
-    A->>DB: Finalisasi Pembayaran (Lock Data)
-    DB-->>A: Generate PDF Kwitansi
-    Note right of A: Rekam Medis Terkunci (Read-Only)
+    D->>DB: Save Examination Data & Vital Signs
+    D->>API: Request Live Medicine Catalog
+    API-->>D: Return Live Medicine Data
+    D->>DB: Create Prescription Draft
+    A->>API: Sync Fluctuation Prices
+    A->>DB: Process Payment & Hard Lock Record
+    DB-->>A: Export Receipt PDF
 ```
 
-
-### 🔄 Alur Kerja Sistem (Business Logic Flow)
+### 2.Business Logic Flow
 
 ```mermaid
 graph TD
-    A[Pasien Datang] --> B[Dokter: Input Pemeriksaan]
-    B --> C{Buat Resep?}
-    C -- Ya --> D[Dokter: Ambil Data Obat via API]
-    D --> E[Simpan Draft Resep & Item]
-    E --> F[Status: Pending]
-    F --> G[Apoteker: Verifikasi & Hitung Total]
-    G --> H[Apoteker: Proses Pembayaran]
-    H --> I[Sistem: Sinkronisasi Harga Akhir via API]
-    I --> J[Status: Paid]
-    J --> K[Locking System: Data Permanen / Read-Only]
-    K --> L[Generate PDF Kwitansi]
-    C -- Tidak --> M[Hanya Simpan Rekam Medis]
+    A[Patient Encounter] --> B[Doctor: Input Examination Details]
+    B --> C{Prescribe Medication?}
+    C -- Yes --> D[Doctor: Sync External API Catalog]
+    D --> E[Save Prescription Draft]
+    E --> F[Pharmacist: Verify & Sync Real-Time Price API]
+    F --> G[Pharmacist: Process Payment]
+    G --> H[System Lock: Set Medical File to Read-Only]
+    H --> I[Generate PDF Invoice]
+    C -- No --> J[Save Baseline Medical Record Only]
 ```
