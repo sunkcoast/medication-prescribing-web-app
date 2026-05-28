@@ -57,7 +57,7 @@ Patient Encounter → Doctor Examination → Prescription Draft
 ### 💊 Pharmacist Module
 | Dashboard Overview | Prescription Processing |
 | :---: | :---: |
-| <a href="https://github.com/user-attachments/assets/648477d1-d4b0-4634-a2f4-732de6d59878"><img width="300" alt="Inventory" src="https://github.com/user-attachments/assets/648477d1-d4b0-4634-a2f4-732de6d59878" /></a> | <a href="https://github.com/user-attachments/assets/f1c0129f-e5ae-41ce-8ac3-97f2f404001e"><img width="300" alt="Processing" src="https://github.com/user-attachments/assets/f1c0129f-e5ae-41ce-8ac3-97f2f404001e" /></a> 
+| <a href="https://github.com/user-attachments/assets/3e442c16-5044-4a10-9fcb-a054db6882ae"><img width="300" alt="Inventory" src="https://github.com/user-attachments/assets/3e442c16-5044-4a10-9fcb-a054db6882ae" /></a> | <a href="https://github.com/user-attachments/assets/f1c0129f-e5ae-41ce-8ac3-97f2f404001e"><img width="300" alt="Processing" src="https://github.com/user-attachments/assets/f1c0129f-e5ae-41ce-8ac3-97f2f404001e" /></a> 
 
 ---
 
