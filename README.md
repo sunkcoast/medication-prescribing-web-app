@@ -55,7 +55,7 @@ Patient Encounter → Doctor Examination → Prescription Draft
 | <a href="https://github.com/user-attachments/assets/9572178e-6096-4a73-988c-cb91c8a0bb30"><img width="300" alt="Medical Record" src="https://github.com/user-attachments/assets/9572178e-6096-4a73-988c-cb91c8a0bb30" /></a> | <a href="https://github.com/user-attachments/assets/f7f24a9d-71be-4276-86e0-2c26fd8f12fb"><img width="300" alt="Activity" src="https://github.com/user-attachments/assets/f7f24a9d-71be-4276-86e0-2c26fd8f12fb" /></a> |
 
 ### 💊 Pharmacist Module
-| Inventory Management | Prescription Processing |
+| Dashboard Overview | Prescription Processing |
 | :---: | :---: |
 | <a href="https://github.com/user-attachments/assets/f1f2959f-9f5c-4751-8f36-580b427d5fdf"><img width="300" alt="Inventory" src="https://github.com/user-attachments/assets/f1f2959f-9f5c-4751-8f36-580b427d5fdf" /></a> | <a href="https://github.com/user-attachments/assets/c36f35d8-3270-4728-aa80-008219df6b19"><img width="300" alt="Processing" src="https://github.com/user-attachments/assets/c36f35d8-3270-4728-aa80-008219df6b19" /></a> 
 
