@@ -50,9 +50,9 @@ Patient Encounter → Doctor Examination → Prescription Draft
 ### 👨‍⚕️ Doctor Module
 | Dashboard Overview | Patient Examination |
 | :---: | :---: |
-| <a href="https://github.com/user-attachments/assets/fe8cfebf-059f-4ca7-a214-3eaad07d76ab"><img width="300" alt="Doctor Dashboard" src="https://github.com/user-attachments/assets/fe8cfebf-059f-4ca7-a214-3eaad07d76ab" /></a> | <a href="https://github.com/user-attachments/assets/0299ca0b-7648-4fb8-b4a2-a42ef5ecc40b"><img width="300" alt="Examination" src="https://github.com/user-attachments/assets/0299ca0b-7648-4fb8-b4a2-a42ef5ecc40b" /></a> |
+| <a href="https://github.com/user-attachments/assets/fe8cfebf-059f-4ca7-a214-3eaad07d76ab"><img width="300" alt="Doctor Dashboard" src="https://github.com/user-attachments/assets/fe8cfebf-059f-4ca7-a214-3eaad07d76ab" /></a> | <a href="https://github.com/user-attachments/assets/9572178e-6096-4a73-988c-cb91c8a0bb30"><img width="300" alt="Medical Record" src="https://github.com/user-attachments/assets/9572178e-6096-4a73-988c-cb91c8a0bb30" /></a> |
 | **Medication Selection** | **Activity Log** |
-| <a href="https://github.com/user-attachments/assets/9572178e-6096-4a73-988c-cb91c8a0bb30"><img width="300" alt="Medical Record" src="https://github.com/user-attachments/assets/9572178e-6096-4a73-988c-cb91c8a0bb30" /></a> | <a href="https://github.com/user-attachments/assets/f7f24a9d-71be-4276-86e0-2c26fd8f12fb"><img width="300" alt="Activity" src="https://github.com/user-attachments/assets/f7f24a9d-71be-4276-86e0-2c26fd8f12fb" /></a> |
+| <a ref="https://github.com/user-attachments/assets/0299ca0b-7648-4fb8-b4a2-a42ef5ecc40b"><img width="300" alt="Examination" src="https://github.com/user-attachments/assets/0299ca0b-7648-4fb8-b4a2-a42ef5ecc40b"  /></a> | <a href="https://github.com/user-attachments/assets/f7f24a9d-71be-4276-86e0-2c26fd8f12fb"><img width="300" alt="Activity" src="https://github.com/user-attachments/assets/f7f24a9d-71be-4276-86e0-2c26fd8f12fb" /></a> |
 
 ### 💊 Pharmacist Module
 | Dashboard Overview | Prescription Processing |
