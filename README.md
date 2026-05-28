@@ -128,11 +128,10 @@ graph TD
 ### Step 1 — Clone & Install Dependencies
 
 ```bash
-git clone https://github.com/your-username/simrs-cs50sql.git
-cd simrs-cs50sql
+git clone https://github.com/your-username/medication-prescribing-web-app.git
+cd medication-prescribing-web-app.
 
 composer install
-npm install && npm run build
 ```
 
 ### Step 2 — Environment Configuration
